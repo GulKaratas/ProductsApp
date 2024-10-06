@@ -34,12 +34,14 @@ class Home: UIViewController {
         products.append(urun6)
         
         productsTableView.separatorColor = UIColor(white: 0.95, alpha: 1)
+        
+        
     }
 
 
 }
 
-extension Home: UITableViewDataSource, UITableViewDelegate {
+extension Home: UITableViewDataSource, UITableViewDelegate , CellProtocol {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products.count
     }
@@ -53,7 +55,41 @@ extension Home: UITableViewDataSource, UITableViewDelegate {
         
         cell.backgroundColor = UIColor(white: 0.95, alpha: 1)
         cell.cellBackground.layer.cornerRadius = 10.0
+        cell.selectionStyle = .none
+        
+        cell.indexPath = indexPath
+        cell.cellProtocol = self
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let product = products[indexPath.row]
+        let delete = UIContextualAction(style: .destructive, title: "Sil"){_,_,_ in
+            print("\(product.name!) silindi")
+        }
+        let edit = UIContextualAction(style: .normal, title: "Düzenle"){_,_,_ in
+            print("\(product.name!) düzenlendi")
+            }
+            
+        return UISwipeActionsConfiguration(actions: [delete, edit])
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let product = products[indexPath.row]
+        performSegue(withIdentifier: "toDetailsVC", sender: product)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailsVC" {
+            if let urun = sender as? Products {
+               let vc = segue.destination as! Details
+                vc.product = urun
+            }
+        }
+    }
+    func addCartSelected(indexPath: IndexPath) {
+        let product = products[indexPath.row]
+        
     }
 }

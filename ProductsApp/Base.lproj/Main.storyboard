@@ -108,22 +108,61 @@
                     <navigationItem key="navigationItem" title="Ürünler" id="Elr-gc-QeQ"/>
                     <connections>
                         <outlet property="productsTableView" destination="95O-nQ-MjI" id="Q2w-Fv-moX"/>
+                        <segue destination="1iI-dY-0Cr" kind="show" identifier="toDetailsVC" id="1bj-5v-doy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1038.9312977099237" y="-2.1126760563380285"/>
         </scene>
-        <!--View Controller-->
+        <!--Details-->
         <scene sceneID="ed3-S3-21H">
             <objects>
-                <viewController id="1iI-dY-0Cr" sceneMemberID="viewController">
+                <viewController id="1iI-dY-0Cr" customClass="Details" customModule="ProductsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BLB-Eh-i1M">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bilgisayar" translatesAutoresizingMaskIntoConstraints="NO" id="nTe-Ji-MXF">
+                                <rect key="frame" x="61.666666666666657" y="185" width="270" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="SL8-7W-8pG"/>
+                                    <constraint firstAttribute="height" constant="100" id="wuI-Tg-ekq"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWk-ch-OSD">
+                                <rect key="frame" x="30" y="753.66666666666663" width="333" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Sepete Ekle"/>
+                                <connections>
+                                    <action selector="selectedAddButton:" destination="1iI-dY-0Cr" eventType="touchUpInside" id="tjd-dt-sJe"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.000 TL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lW-uN-yJI">
+                                <rect key="frame" x="139" y="355" width="115" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="TLU-8i-rm8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0lW-uN-yJI" firstAttribute="centerX" secondItem="BLB-Eh-i1M" secondAttribute="centerX" id="1Bc-Y3-GaA"/>
+                            <constraint firstItem="nTe-Ji-MXF" firstAttribute="centerX" secondItem="BLB-Eh-i1M" secondAttribute="centerX" id="Ast-Rf-0X2"/>
+                            <constraint firstItem="nTe-Ji-MXF" firstAttribute="top" secondItem="TLU-8i-rm8" secondAttribute="top" constant="30" id="DIW-Dg-iAA"/>
+                            <constraint firstItem="0lW-uN-yJI" firstAttribute="top" secondItem="nTe-Ji-MXF" secondAttribute="bottom" constant="70" id="Q5d-lf-p26"/>
+                            <constraint firstItem="TLU-8i-rm8" firstAttribute="trailing" secondItem="oWk-ch-OSD" secondAttribute="trailing" constant="30" id="Sbp-TF-26y"/>
+                            <constraint firstItem="TLU-8i-rm8" firstAttribute="bottom" secondItem="oWk-ch-OSD" secondAttribute="bottom" constant="30" id="nEy-Ma-jC4"/>
+                            <constraint firstItem="0lW-uN-yJI" firstAttribute="centerX" secondItem="BLB-Eh-i1M" secondAttribute="centerX" id="p98-xC-e4D"/>
+                            <constraint firstItem="oWk-ch-OSD" firstAttribute="leading" secondItem="TLU-8i-rm8" secondAttribute="leading" constant="30" id="vc0-ip-JGp"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="iGd-5v-Hl3"/>
+                    <connections>
+                        <outlet property="imageViewSelected" destination="nTe-Ji-MXF" id="Nua-n4-8PP"/>
+                        <outlet property="priceLabel" destination="0lW-uN-yJI" id="V3p-Ar-SEB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdj-cN-qo2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,13 +7,22 @@
 
 import UIKit
 
+protocol CellProtocol {
+    func addCartSelected(indexPath : IndexPath)
+}
+
 class ProductsCell: UITableViewCell {
+    
+   
 
     @IBOutlet weak var cellBackground: UIView!
     
     @IBOutlet weak var labelProductPrice: UILabel!
     @IBOutlet weak var labelProductName: UILabel!
     @IBOutlet weak var imageViewProduct: UIImageView!
+    
+    var cellProtocol: CellProtocol?
+    var indexPath: IndexPath?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,6 +35,7 @@ class ProductsCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func buttonAdd(_ sender: Any) {
+        cellProtocol?.addCartSelected(indexPath: indexPath!)
     }
     
 }
